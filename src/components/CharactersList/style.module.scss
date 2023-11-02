@@ -1,0 +1,17 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.charactersList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 250px);
+  justify-content: center;
+  gap: 27px;
+  width: 100%;
+}
+
+@include mediaDesktop {
+  .charactersList {
+    grid-template-columns: repeat(2, 1fr);
+    width: 1227px;
+  }
+}
