@@ -1,0 +1,25 @@
+@import '../../styles/variables.scss';
+@import '../../styles//mixins.scss';
+
+.heading {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background-color: $white;
+
+  h1 {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 900;
+    font-size: 100px;
+    text-align: center;
+    color: $bodyBg;
+  }
+
+  @include mediaPhone {
+    h1 {
+      font-size: 50px;
+    }
+  }
+}
