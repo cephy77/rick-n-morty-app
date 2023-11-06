@@ -15,3 +15,34 @@
     width: 1227px;
   }
 }
+
+.pagination {
+  & li {
+    & button {
+      border: 0;
+      background-color: $cardBg;
+      color: $text;
+
+      &:hover {
+        background-color: darken($text, 50%);
+        color: $bodyBg;
+      }
+
+      &[aria-current],
+      &[aria-current]:hover,
+      &[aria-label='Go to previous page'],
+      &[aria-label='Go to next page'] {
+        background-color: $text;
+        color: $bodyBg;
+      }
+
+      &:disabled {
+        background-color: $textSecondary;
+        color: rgba($mainSectionBg, 0.6);
+      }
+    }
+    & div {
+      color: $text;
+    }
+  }
+}

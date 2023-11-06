@@ -1,36 +1,44 @@
 import { Link } from 'react-router-dom';
 import style from './srtyle.module.scss';
 import cn from 'classnames';
+import { Character } from '../../types/Character';
 
-export const CharacterCard = () => {
+interface PropsTypes {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  character: Character
+}
+
+export const CharacterCard = ({ character }: PropsTypes) => {
+
+
   return (
     <div className={style.card}>
       <img
-        src="https://rickandmortyapi.com/api/character/avatar/361.jpeg"
-        alt=""
+        src={character.image}
+        alt={character.name}
         className={style.cardImage}
       />
       <article className={style.cardInfo}>
-        <Link to={'/sql'} className={style.cardName}>
-          Name
+        <Link to={`/${character.id}`} className={style.cardName}>
+          {character.name}
         </Link>
 
         <p className={style.cardStatus}>
           <span className={cn(style.cardStatusIndicator, {
-            [style.cardStatusIndicatorAlive]: true,
+            [style[`cardStatusIndicator${character.status}`]]: character.status !== 'unknown',
           })} />
-          <span>Unknown - Humanoid</span>
+          <span>{character.status} - {character.species}</span>
         </p>
 
 
         <div className={style.cardLocation}>
           <p className={style.cardLocationHeader}>Last known location:</p>
-          <p className={style.cardLocationInfo}>Citadel of Ricks</p>
+          <p className={style.cardLocationInfo}>{character.location.name}</p>
         </div>
 
         <div className={style.cardLocation}>
           <p className={style.cardLocationHeader}>First seen in:</p>
-          <p className={style.cardLocationInfo}>Close Rick-counters of the Rick Kind</p>
+          <p className={style.cardLocationInfo}>{character.episode[0].name}</p>
         </div>
       </article>
     </div>
