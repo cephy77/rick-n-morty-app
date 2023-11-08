@@ -1,0 +1,45 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.dropdown {
+  &Wrapper {
+    position: relative;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 200px;
+  height: 57px;
+  padding: 8px 12px;
+  color:$mainSectionBg;
+  background-color: $text;
+  border: $text solid 1px;
+  border-radius: 4px 4px 0 0;
+  cursor: pointer;
+
+  &Arrow {
+    width: 24px;
+    height: 24px;
+    transition: transform ease 0.3s;
+    
+    &Open {
+      transform: rotateZ(180deg);
+    }
+  }
+}
+
+.popover {
+  position: absolute;
+  width: 100%;
+  color:$mainSectionBg;
+  background-color: $text;
+  border-top:black solid 1px;
+  border-radius: 0 0 4px 4px;
+  &Item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    height: 56px;
+  }
+}
