@@ -1,0 +1,104 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.card {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 1227px;
+  border-radius: 9px;
+  overflow: hidden;
+  color: $text;
+
+  &Image {
+    width: 50%;
+  max-width: 572px;
+
+  }
+
+  &Info {
+    flex-grow: 1;
+    padding: 12.5px 13.5px;
+    background-color: $cardBg;
+  }
+
+  &Name {
+    display: inline-block;
+    width: 100%;
+    color: $text;
+    font-weight: 700;
+    font-size: 18px;
+    overflow-wrap: break-word;
+  }
+
+  &Status {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 9px;
+
+    &Indicator {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background-color: $textSecondary;
+
+      &Alive {
+        background-color: $green;
+      }
+      &Dead {
+        background-color: $red;
+      }
+    }
+  }
+  
+  &Location,
+  &Gender {
+    margin-bottom: 13.5px;
+
+    &Header {
+      font-size: 14px;
+      color: $textSecondary;
+      line-height: 22px;
+    }
+
+    &Info {
+      font-size: 16px;
+      line-height: 26px;
+    }
+  }
+
+}
+
+@include mediaDesktop {
+  .card {
+
+    &Name {
+      font-weight: 800;
+      font-size: 27px;
+    }
+
+    &Status {
+      font-size: 16px;
+      line-height: 26px;
+    }
+
+    &Location,
+    &Gender {
+  
+      &Header {
+        font-size: 15px;
+        color: $textSecondary;
+        line-height: 26px;
+      }
+  
+      &Info {
+        font-size: 18px;
+        line-height: 30px;
+      }
+    }
+  }
+}

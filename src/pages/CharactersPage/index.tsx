@@ -2,6 +2,10 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { fetchCharacter } from '../../features/thunkActions/fetchCharacters';
+import { CharacterInfo } from '../../components/CharacterInfo';
+import style from './srtyle.module.scss';
+import { CircularProgress } from '@mui/material';
+
 
 export const CharactersPage = () => {
   const dispatch = useAppDispatch();
@@ -10,20 +14,23 @@ export const CharactersPage = () => {
 
   useEffect(() => {
     if (characterId) {
-      dispatch(fetchCharacter(+characterId));
+      dispatch(fetchCharacter(+characterId))
     }
   }, []);
 
   return (
-    <div>
-      {isLoading && 'loaddddddddd'}
-      {character && (
-        <>
-          <img src={character.image} alt="" />
-          <p>{character.name}</p>
-          <p>oh jeez jeez</p>
-        </>
-      )}
+    <div className={style.charactersPage}>
+      {isLoading
+        ? (
+          <CircularProgress />
+        )
+        : (
+          <>
+            {character && (
+              <CharacterInfo character={character} />
+            )}
+          </>
+        )}
     </div>
   )
 }
