@@ -4,7 +4,6 @@ import cn from 'classnames';
 import { Character } from '../../types/Character';
 
 interface PropsTypes {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   character: Character
 }
 

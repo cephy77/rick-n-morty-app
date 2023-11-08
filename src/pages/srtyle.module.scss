@@ -1,5 +1,18 @@
 @import '../styles/variables.scss';
 
 .main {
+  position: relative;
   background-color: $mainSectionBg;
+}
+
+.fab {
+  position: absolute;
+  bottom: 50px;
+  top: 50px;
+  right: 70px;
+
+  & > * {
+    position: sticky;
+    top: 75%;
+  }
 }

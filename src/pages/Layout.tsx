@@ -1,3 +1,4 @@
+import { FAB } from '../components/FAB';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { Heading } from '../components/Heading';
@@ -13,6 +14,9 @@ export const Layout = ({ children }: PropsTypes) => (
     <Heading />
     <main className={style.main}>
       {children}
+      <div className={style.fab}>
+        <FAB />
+      </div>
     </main>
     <Footer />
   </>
