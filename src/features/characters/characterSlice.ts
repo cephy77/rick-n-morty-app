@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchCharacter } from '../thunkActions/fetchCharacters';
+import { CharacterInfo } from '../../types/Character';
 
 interface InitialState {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  character: any,
+  character: CharacterInfo | null,
   isLoading: boolean,
 }
 
 const initialState: InitialState = {
   character: null,
-  isLoading: false,
+  isLoading: true,
 }
 
 const characterSlice = createSlice({
@@ -23,8 +23,8 @@ const characterSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchCharacter.fulfilled, (state, action) => {
-        state.isLoading = false;
         state.character = action.payload;
+        state.isLoading = false;
       })
       .addCase(fetchCharacter.rejected, (state) => {
         state.isLoading = false;

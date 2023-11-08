@@ -15,7 +15,7 @@ export const fetchCharacters = createAsyncThunk('characters/fetchCharacters', as
 
 export const fetchCharacter = createAsyncThunk('character/fetchCharacter', async (id: number) => {
   try {
-    const response = await api.fetchSingleCharacter(id)
+    const response = await api.fetchSingleCharacter({ id })
     const character = response.data.character;
 
     return character;

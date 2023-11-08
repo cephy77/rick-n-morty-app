@@ -1,23 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchCharacters } from '../thunkActions/fetchCharacters';
+import { Character } from '../../types/Character';
 
 interface InitialState {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  characters: any[],
+  characters: Character[],
   totalPages: number,
   isLoading: boolean,
+  query: string,
 }
 
 const initialState: InitialState = {
   characters: JSON.parse(sessionStorage.getItem('allCharacters') || '[]'),
   totalPages: 0,
   isLoading: false,
+  query: '',
 }
 
 const charactersSlice = createSlice({
   name: 'characters',
   initialState,
   reducers: {
+    setQuery(state, action) {
+      state.query = action.payload
+    }
   },
   extraReducers(builder) {
     builder
@@ -36,5 +41,5 @@ const charactersSlice = createSlice({
   },
 })
 
-// export const {  } = charactersSlice.actions;
+export const { setQuery } = charactersSlice.actions;
 export default charactersSlice.reducer;
