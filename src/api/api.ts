@@ -1,14 +1,9 @@
-import { FetchParams } from '../types/FetchParams';
+import { FetchParams, Queries } from '../types/FetchParams';
 
 const BASE_URL = 'https://rickandmortyapi.com/graphql';
 
-interface Queries {
-  characters: (page: number, query?: string) => string,
-  character: (id: number) => string,
-}
-
 const queries: Queries = {
-  characters(page, query = '') {
+  characters({ page, query = '' }) {
     return `{
       characters(page: ${page} ${query && `, filter: {${query}}`}) {
         info {
@@ -32,11 +27,13 @@ const queries: Queries = {
       }
     }`
   },
-  character(id) {
+  character({ id }) {
     return `{
       character (id: ${id}) {
+          id
           name
           image
+          gender
           status
           species
           location {
@@ -51,25 +48,24 @@ const queries: Queries = {
   }
 }
 
-async function getRequest(queryType: keyof Queries, page: number, query = '') {
+async function getRequest(queryType: keyof Queries, params: FetchParams) {
   const response = fetch(BASE_URL, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
     },
     body: JSON.stringify({
-      query: queries[queryType](page, query)
+      query: queries[queryType](params)
     })
   });
-
   return (await response).json();
 }
 
 export const api = {
-  async fetchCharacters({ page, query }: FetchParams) {
-    return await getRequest('characters', page, query)
+  async fetchCharacters(params: Omit<FetchParams, 'id'>) {
+    return await getRequest('characters', params)
   },
-  async fetchSingleCharacter(id: number) {
-    return await getRequest('character', id);
+  async fetchSingleCharacter(params: Pick<FetchParams, 'id'>) {
+    return await getRequest('character', params);
   }
 }
