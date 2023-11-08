@@ -1,0 +1,59 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.fab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  gap: 24px;
+  height: 184px;
+  
+  &History,
+  &CSV {
+    transform: translateY(0);
+    transition: all ease 0.4s; 
+
+    &Hidden {
+      transform: translateY(calc(200% + 48px));
+    }
+  }
+
+  &CSV {
+    &Hidden {
+      transform: translateY(calc(100% + 24px));
+    }
+  }
+}
+
+.drawer {
+  background-color: transparent !important;
+  justify-content: center;
+  box-shadow: none !important;
+  
+  &Content {
+    width: 419px;
+    height: 571px !important;
+    border-radius: 9px 0 0 9px;
+    background-color: $white;
+    font-family: Roboto;
+  }
+
+  &Heading {
+    padding: 16px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  &List {
+    padding: 10px 10px 10px 26px;
+    font-size: 14px;
+    font-weight: 400;
+    list-style:circle;
+    overflow: auto;
+
+    &Item {
+      color: $mainSectionBg;
+    }
+  }
+}
