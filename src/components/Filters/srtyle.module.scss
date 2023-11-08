@@ -1,0 +1,57 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.filters {
+  display: flex;
+  width: 100%;
+  max-width: 1227px;
+
+  &Button,
+  &Input {
+    height: 57px;
+    padding: 8px 12px;
+    color:$mainSectionBg;
+    background-color: $text;
+    border: $text solid 1px;
+  }
+  
+  &Button {
+    padding: 11px 16px;
+    border-radius: 4px;
+    text-transform: uppercase;
+
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+  }
+
+  &Options {
+    display: flex;
+    gap: 28px;
+    margin-left: 100px;
+  }
+
+  &Form {
+    position: relative;
+    display: block;
+    width: 260px;
+  }
+
+  &Inputs {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  &Input {
+    border-bottom: black 1px solid;
+
+    &:last-child {
+      border: 0;
+    }
+  }
+}
