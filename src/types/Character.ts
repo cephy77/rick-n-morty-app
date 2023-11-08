@@ -20,3 +20,11 @@ export interface CharacterForCvs {
   ['First See In']: string,
 }
 
+export interface CharacterInfo extends Character {
+  gender: string
+  location: {
+    name: string,
+    dimension: string,
+  },
+}
+
